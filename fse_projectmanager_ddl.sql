@@ -47,3 +47,12 @@ CREATE TABLE `task` (
   CONSTRAINT `fkey_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fkey_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user_project` (
+  `user_id` bigint(20) NOT NULL,
+  `project_id` bigint(20) NOT NULL,
+  KEY `fk_project_id_idx` (`project_id`),
+  KEY `fk_user_id` (`user_id`),
+  CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
